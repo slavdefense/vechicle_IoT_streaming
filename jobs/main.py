@@ -7,12 +7,12 @@ from confluent_kafka import SerializingProducer
 import simplejson as json
 from datetime import datetime, timedelta
 
-LONDON_COORDINATES = {"latitude": 51.5074, "longitude": -0.1278}
-BIRMINGHAM_COORDINATES = {"latitude": 52.4862, "longitude": -1.8904}
+LOSANGELES_COORDINATES = {"latitude": 51.5074, "longitude": -0.1278}
+LASVEGAS_COORDINATES = {"latitude": 52.4862, "longitude": -1.8904}
 
 # Calculate movement increments
-LATITUDE_INCREMENT = (BIRMINGHAM_COORDINATES['latitude'] - LONDON_COORDINATES['latitude']) / 100
-LONGITUDE_INCREMENT = (BIRMINGHAM_COORDINATES['longitude'] - LONDON_COORDINATES['longitude']) / 100
+LATITUDE_INCREMENT = (LASVEGAS_COORDINATES['latitude'] - LOSANGELES_COORDINATES['latitude']) / 100
+LONGITUDE_INCREMENT = (LASVEGAS_COORDINATES['longitude'] - LOSANGELES_COORDINATES['longitude']) / 100
 
 # Environment Variables for configuration
 KAFKA_BOOTSTRAP_SERVERS = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092')
@@ -24,7 +24,7 @@ EMERGENCY_TOPIC = os.getenv('EMERGENCY_TOPIC', 'emergency_data')
 
 random.seed(42)
 start_time = datetime.now()
-start_location = LONDON_COORDINATES.copy()
+start_location = LOSANGELES_COORDINATES.copy()
 
 def get_next_time():
     global start_time
@@ -146,9 +146,9 @@ def simulate_journey(producer, device_id):
         weather_data = generate_weather_data(device_id, vehicle_data['timestamp'], vehicle_data['location'])
         emergency_incident_data = generate_emergency_incident_data(device_id, vehicle_data['timestamp'],
                                                                    vehicle_data['location'])
-        if (vehicle_data['location'][0] >= BIRMINGHAM_COORDINATES['latitude']
-                and vehicle_data['location'][1] <= BIRMINGHAM_COORDINATES['longitude']):
-            print('Vehicle has reached Birmingham. Simulation ending...')
+        if (vehicle_data['location'][0] >= LASVEGAS_COORDINATES['latitude']
+                and vehicle_data['location'][1] <= LASVEGAS_COORDINATES['longitude']):
+            print('Vehicle has reached Las Vegas. Simulation ending...')
             break
        
         produce_data_to_kafka(producer, VEHICLE_TOPIC, vehicle_data)
@@ -168,7 +168,7 @@ if __name__ == "__main__":
     producer = SerializingProducer(producer_config)
 
     try:
-        simulate_journey(producer, 'Vehicle-CodeWithYu-123')
+        simulate_journey(producer, 'Vehicle-codeWithSagun-123')
 
     except KeyboardInterrupt:
         print('Simulation ended by the user')
