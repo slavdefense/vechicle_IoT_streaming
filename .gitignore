@@ -1,0 +1,60 @@
+# Ignore environment files
+.env
+.env.*
+
+# Ignore AWS credentials
+config.py
+aws_config.json
+*.pem  # Ignore AWS private keys
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Logs and debug
+logs/
+*.log
+debug.log
+
+# Data files
+*.csv
+*.sqlite3
+*.db
+*.json
+*.xml
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# VS Code
+.vscode/
+
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+
+# MacOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows files
+Thumbs.db
+ehthumbs.db
