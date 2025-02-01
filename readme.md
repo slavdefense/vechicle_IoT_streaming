@@ -38,11 +38,6 @@ Automatically discovers schema and creates/updates the Data Catalog.
 Amazon Redshift
 Performs complex queries and analytics on the data.
 
-
-## Setup and Installation
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-
 ## Install Dependencies
 pip install -r requirements.txt
 
